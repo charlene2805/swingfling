@@ -1,20 +1,12 @@
-<html>
-    <head>
-        <title>Swing Fling</title>
-    </head>
-    <body>
-      <div>
-          <h1><a href="">Swing Fling</a></h1><br><br>
-      </div>
+{% extends 'blog/base.html' %}
 
-
+  {% block content %}
         {% for post in posts %}
-          <div>
+          <div class="post">
+            <div class="date">
             <p>published: {{post.published_date}}</p>
-            <h2><a href="">{{post.title}}</a></h2>
+            <h1><a href="{% url 'post_detail' pk=post.pk %}">{{post.title}}</a></h1>
             <p>{{post.text|linebreaksbr}}</p><br>
           </div>
         {% endfor %}
-
-  </body>
-</html>
+        {% endblock %}
